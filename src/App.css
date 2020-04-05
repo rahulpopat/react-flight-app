@@ -1,5 +1,98 @@
 .App {
+  padding: 1rem 4rem 2rem 4rem;
+}
+
+.heading {
+  padding-left: 1.5rem;
+}
+
+.inputCard {
+  padding: 1rem 0rem 0rem 1rem;
+}
+
+.inputData {
+  border-radius: 1rem;
+  width: 68% !important;
+  margin: 0px !important;
+}
+
+.labetText {
+  background-color: #ff6000;
+  padding: 0.5rem;
+  width: 26%;
+  border-radius: 1rem;
   text-align: center;
+}
+
+.environment {
+  color: #ffffff;
+  padding: 0.5rem;
+  width: 26%;
+  border-radius: 1rem;
+  text-align: center;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.DEV {
+  background-color: #fd3434;
+}
+
+.uk-card-body {
+  padding: 1rem 1rem !important;
+  border-radius: 0.75rem;
+}
+
+.uk-table th {
+  vertical-align: top !important;
+}
+
+.submit-button {
+  border-radius: 1rem;
+  width: 16%;
+  background-color: #ff6000;
+  color: #ffffff;
+  margin: 1rem 1rem 1rem 2rem;
+  text-align: center;
+}
+
+.book-button {
+  border-radius: 1rem;
+  width: 50%;
+  background-color: #ff6000;
+  color: #ffffff;
+  /* margin: 0rem 1rem 1rem 2rem; */
+  margin-top: -5px;
+  text-align: center;
+}
+
+.result {
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+}
+
+.title {
+  width: 10rem;
+}
+
+.resultData {
+  
+}
+
+.search-button {
+  width: 24% !important;
+}
+
+.get-all-button {
+  width: 28%;
+}
+
+.resultTable {
+  margin-top: 1.5rem;
+}
+
+.error {
+  color: #e91818;
 }
 
 .App-logo {
@@ -14,14 +107,14 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -35,4 +128,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    display: block;
+    width: 100%;
+    padding-left: 0.5rem;
+    height: 2.5rem;
+    border-radius: 2rem;
 }
