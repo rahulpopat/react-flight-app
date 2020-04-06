@@ -9,7 +9,8 @@ export default class Nav extends React.Component {
         <h1 {...css(styles.heading)}>Booking Application</h1>
         {/* <Link to='/' {...css(styles.link)}></Link> */}
         <Link to='/flights' {...css(styles.link)}>Flights</Link>
-        <Link to='/search' {...css(styles.link)}>Search Flights</Link>
+        {/* <Link to='/search' {...css(styles.link)}>Search Flights</Link> */}
+        <Link to='/flightFilter' {...css(styles.link)}>Search Flights</Link>
       </div>
     )
   }

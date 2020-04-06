@@ -20,10 +20,13 @@ class Flights extends React.Component {
         {
           this.props.items.map((item, i) => (
             <div {...css(styles.item)} key={i}>
+              <p {...css(styles.title)}>Flight Id: {item.id}</p>
               <p {...css(styles.title)}>Flight Number: {item.flightNumber}</p>
               <p {...css(styles.title)}>Departure Airport: {item.departureAirportCode}</p>
               <p {...css(styles.title)}>Arrival Airport: {item.arrivalAirportCode}</p>
               <p {...css(styles.title)}>Departure Date: {item.departureDate}</p>
+              <p {...css(styles.title)}>Departure Date: {item.ticketPrice}</p>
+              <p {...css(styles.title)}>Departure Date: {item.ticketCurrency}</p>
             </div>
           ))
         }

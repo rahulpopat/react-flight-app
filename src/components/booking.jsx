@@ -2,6 +2,8 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import "react-datepicker/dist/react-datepicker.css";
 import { Redirect } from 'react-router-dom'
+
+import ReactJson from 'react-json-view'
  
 export const Booking = observer(
    class Booking extends React.Component {
@@ -9,23 +11,24 @@ export const Booking = observer(
        constructor(props) {
            super(props);
            this.state = {
-               flightId: '',
-               customerName: '',
+               flightNumber: '',
+               customer: '',
                paymentToken: '',
                isError: false,
-               redirect: false
+               redirect: false,
+               restapi: ''
            };
        }
 
        componentDidMount () {
-            console.log(this.state.flightId)
+            console.log(this.state.flightNumber)
             // const { id } = this.props.match.params
             const { match: { params } } = this.props;
 
             this.setState({
-                flightId: params.id
+                flightNumber: params.flightNumber
             })
-            console.log(this.state.flightId)
+            console.log(this.state.flightNumber)
        }
 
        setRedirect = () => {
@@ -42,13 +45,24 @@ export const Booking = observer(
 
        bookFlight = () => {
             console.log(this.state)
+
+            this.setState({
+                restapi: {
+                    bookingOutboundFlightId: this.state.flightNumber,
+                    paymentToken: this.state.paymentToken,
+                    customer: this.state.customer,
+                    checkedIn: false,
+                    status: "CONFIRMED"
+                }
+            })
+
            /* below code goes in then of promise */
-           this.setRedirect()
+        //    this.setRedirect()
         
            /* below code goes in error of promise */
-        //    this.setState({
-        //         isError: true
-        //     })
+           this.setState({
+                isError: true
+            })
        }
  
        // common handle method for both start date and end date
@@ -64,8 +78,8 @@ export const Booking = observer(
             <div className="inputCard">
                 <div className="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
                     <div>
-                        <span className="uk-label labetText"> Flight ID</span>
-                        <input className="uk-input inputData uk-align-right" type="text" name='flightId' value={this.state.flightId} readOnly />
+                        <span className="uk-label labetText"> Flight Number</span>
+                        <input className="uk-input inputData uk-align-right" type="text" name='flightNumber' value={this.state.flightNumber} readOnly />
                     </div>
                 </div>
             </div>
@@ -74,7 +88,7 @@ export const Booking = observer(
                     <div>
                         <span className="uk-label labetText">Customer Name</span>
                         <input className="uk-input inputData uk-align-right" type="text" placeholder="Enter Customer Name"
-                        name='customerName' value={this.state.customerName} onChange={e => this.handleChange(e)} />
+                        name='customer' value={this.state.customer} onChange={e => this.handleChange(e)} />
                     </div>
                 </div>
             </div>
@@ -95,7 +109,8 @@ export const Booking = observer(
 
             {this.state.isError && <div className="inputCard">
                 <div className="uk-card uk-card-default uk-card-body error" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-                    <p>Invalid Input</p>
+                    <p>Move on to REST APIs on Serverless Architecture</p>
+                    <p><ReactJson src={this.state.restapi}/></p>
                 </div>
             </div>}
 

@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import FlightSearch from './components/search'
 import Flights from './components/flights'
 import Booking from './components/booking'
+import FlightFilter from './components/flightFilter'
 
 import Nav from './Nav'
 
@@ -21,7 +22,8 @@ class App extends Component {
               <Route exact path="/" component={FlightSearch} />
               <Route path="/flights" component={Flights} />
               <Route path="/search" component={FlightSearch} />
-              <Route path="/booking/:id" component={Booking} />
+              <Route path="/booking/:flightNumber" component={Booking} />
+              <Route path="/flightFilter" component={FlightFilter} />
             </Switch>
           </div>
         </Router>
