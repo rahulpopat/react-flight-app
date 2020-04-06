@@ -11,8 +11,8 @@ export const FlightSearch = observer(
            super(props);
            this.state = {
                startDate: new Date(),
-               fromAirport: 'EWR',
-               toAirport: '',
+               fromAirport: '',
+               toAirport: 'SEA',
                result: '',
                isError: false
            };
@@ -24,7 +24,6 @@ export const FlightSearch = observer(
        }
  
        submitSearch = () => {
- 
            let testResult = [{
                     "flightNumber": "100",
                     "departureAirport": "Test SRCI",
@@ -39,7 +38,7 @@ export const FlightSearch = observer(
                 }
             ]
 
-           if(this.state.fromAirport === 'EWR') {
+           if(this.state.toAirport === 'SEA') {
                 this.setState({
                     result: testResult,
                     isError: false
@@ -50,86 +49,7 @@ export const FlightSearch = observer(
                     isError: true
                 });
            }
- 
            console.log(this.state);
-
-           // fetch(API_ROOT, {
-           //     method: 'GET',
-           //     headers: {
-           //         'Accept': 'application/json;charset=UTF-8',
-           //         'Content-Type': 'application/json;charset=UTF-8',
-           //         'program-id': 'SRC',
-           //         'correlation-id': '12345'
-           //     }
-           // })
-           // .then(res => res.json())
-           // .then(
-           //     (result) => {
-           //         console.log(result);
-           //         if(result.hasOwnProperty('errorDetail')) {
-           //             this.setState({
-           //                 errorData: result.errorDetail.toString(),
-           //                 isError: true,
-           //                 result: ''
-           //             });
-           //         }
-           //         else {
-           //             this.setState({
-           //                 result: result,
-           //                 isError: false
-           //             });
-           //         }
-           //     },
-           //     (error) => {
-           //         this.setState({
-           //             isError: true
-           //         });
-           //     }
-           // )
-
-           /*
-           fetch(API_ROOT, {
-               method: 'POST',
-               headers: {
-                   'Accept': 'application/json;charset=UTF-8',
-                   'Content-Type': 'application/json;charset=UTF-8',
-                   'program-id': 'SRC',
-                   'correlation-id': '12345'
-               },
-               body: JSON.stringify({
-                   srciProfileName: this.state.srciProfileName,
-                   srciProfileDescription: this.state.srciProfileDescription,
-                   srciLegalName: this.state.srciLegalName,
-                   srciResponseTypeCode: this.state.srciResponseTypeCode,
-                   supportURI: this.state.supportURI,
-                   supportPhoneNumber: this.state.supportPhoneNumber,
-                   supportEmailAddress: this.state.supportEmailAddress
-                 })
-           })
-           .then(res => res.json())
-           .then(
-               (result) => {
-                   console.log(result);
-                   if(result.hasOwnProperty('errorDetail')) {
-                       this.setState({
-                           errorData: result.errorDetail.toString(),
-                           isError: true
-                       });
-                   }
-                   else {
-                       this.setState({
-                           result: result,
-                           isError: false
-                       });
-                   }
-               },
-               (error) => {
-                   this.setState({
-                       isError: true
-                   });
-               }
-           )
-        */
        }
        
        setStartDate = (date) => {

@@ -2,16 +2,30 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import registerServiceWorker from './registerServiceWorker'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import AWSAppSyncClient from "aws-appsync";
+import { Rehydrated } from 'aws-appsync-react';
+import { ApolloProvider } from 'react-apollo';
+ 
+import appSyncConfig from './AppSync';
+ 
+const client = new AWSAppSyncClient({
+  url: appSyncConfig.graphqlEndpoint,
+  region: appSyncConfig.region,
+  auth: {
+    type: appSyncConfig.authenticationType,
+    apiKey: appSyncConfig.apiKey,
+  }
+});
+ 
+const WithProvider = () => (
+  <ApolloProvider client={client}>
+    <Rehydrated render={({ rehydrated }) => (
+      rehydrated ? <App /> : <strong>Your custom UI componen here...</strong>
+    )} />
+  </ApolloProvider>
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ 
+ReactDOM.render(<WithProvider />, document.getElementById('root'));
+registerServiceWorker();
