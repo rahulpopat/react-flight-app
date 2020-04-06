@@ -11,19 +11,19 @@ import debounce from 'lodash/debounce';
 
 const SearchFlights = gql`
   query($searchQuery: String) {
-    listFlights (filter: {
-    departureAirportCode: {
-      eq: $searchQuery
-    }
-  }) {
-    items {
-      flightNumber
-      departureDate
-      departureAirportCode
-      arrivalAirportCode
+      listFlights (filter: {
+      departureAirportCode: {
+        eq: $searchQuery
+      }
+    }) {
+      items {
+        flightNumber
+        departureDate
+        departureAirportCode
+        arrivalAirportCode
+      }
     }
   }
-}
 `
 
 class Flights extends React.Component {

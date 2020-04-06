@@ -3,10 +3,30 @@ import React from 'react'
 import { css } from 'glamor'
 import { graphql, compose } from 'react-apollo'
 import ListFlights from '../queries/ListFlights'
-// import SearchFlights from '../queries/SearchFlights'
 
-// import gql from 'graphql-tag'
-// import debounce from 'lodash/debounce';
+import { useQuery } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
+
+const SEARCH_FLIGHTS = gql`
+  query($searchQuery: String) {
+    listFlights (filter: $searchQuery) {
+            items {
+            flightNumber
+            departureDate
+            departureAirportCode
+            arrivalAirportCode
+            }
+        }
+    }
+`;
+
+function Hello() {
+    const { loading, error, data } = useQuery(SEARCH_FLIGHTS, {
+      variables: { departureAirportCode: 'JFK' },
+    });
+    if (loading) return <p>Loading ...</p>;
+    return <h1>Hello {data}!</h1>;
+  }
 
 class Flights extends React.Component {
   componentWillMount(){
@@ -65,12 +85,3 @@ export default compose(
     })
   })
 )(Flights)
-
-// export default compose(
-//   graphql(SearchFlights, {
-//     options: (props) => ({ variables: { departureAirportCode: 'JFK' } }),
-//     props: props => ({
-//       items: props.data.listFlights ? props.data.listFlights.items : [],
-//     })
-// }))(Flights)
-
