@@ -49,7 +49,7 @@
 
 .submit-button {
   border-radius: 1rem;
-  width: 16%;
+  /* width: 16%; */
   background-color: #ff6000;
   color: #ffffff;
   margin: 1rem 1rem 1rem 2rem;

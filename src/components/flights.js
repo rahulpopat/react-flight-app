@@ -16,15 +16,22 @@ class Flights extends React.Component {
     console.log('propd ' + this.props)
     return (
       <div {...css(styles.container)}>
-        <h1>Flights</h1>
+        <h1>All Flights</h1>
         {
           this.props.items.map((item, i) => (
             <div {...css(styles.item)} key={i}>
               <p {...css(styles.title)}>Flight Id: {item.id}</p>
               <p {...css(styles.title)}>Flight Number: {item.flightNumber}</p>
-              <p {...css(styles.title)}>Departure Airport: {item.departureAirportCode}</p>
-              <p {...css(styles.title)}>Arrival Airport: {item.arrivalAirportCode}</p>
               <p {...css(styles.title)}>Departure Date: {item.departureDate}</p>
+              <p {...css(styles.title)}>Departure City: {item.departureCity}</p>
+              <p {...css(styles.title)}>Departure Locale: {item.departureLocale}</p>
+              <p {...css(styles.title)}>Departure Airport Code: {item.departureAirportCode}</p>
+              <p {...css(styles.title)}>Departure Airport Name: {item.departureAirportName}</p>
+              <p {...css(styles.title)}>Arrival Date: {item.arrivalDate}</p>
+              <p {...css(styles.title)}>Arrival City: {item.arrivalCity}</p>
+              <p {...css(styles.title)}>Arrival Locale: {item.arrivalLocale}</p>
+              <p {...css(styles.title)}>Arrival Airport Code: {item.arrivalAirportCode}</p>
+              <p {...css(styles.title)}>Arrival Airport Name: {item.arrivalAirportName}</p>
               <p {...css(styles.title)}>Departure Date: {item.ticketPrice}</p>
               <p {...css(styles.title)}>Departure Date: {item.ticketCurrency}</p>
             </div>
