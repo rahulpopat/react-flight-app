@@ -8,6 +8,7 @@ import FlightSearch from './components/search'
 import Flights from './components/flights'
 import Booking from './components/booking'
 import FlightFilter from './components/flightFilter'
+import NotFoundPage from './components/notFoundPage'
 
 import Nav from './Nav'
 
@@ -24,6 +25,7 @@ class App extends Component {
               <Route path="/search" component={FlightSearch} />
               <Route path="/booking/:flightNumber" component={Booking} />
               <Route path="/flightFilter" component={FlightFilter} />
+              <Route path="*" component={NotFoundPage} />
             </Switch>
           </div>
         </Router>
