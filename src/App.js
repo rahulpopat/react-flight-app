@@ -19,7 +19,7 @@ class App extends Component {
           <div>
             <Nav />
             <Switch>
-              <Route exact path="/" component={FlightSearch} />
+              <Route exact path="/" component={FlightFilter} />
               <Route path="/flights" component={Flights} />
               <Route path="/search" component={FlightSearch} />
               <Route path="/booking/:flightNumber" component={Booking} />
