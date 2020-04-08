@@ -5,7 +5,8 @@ import { Redirect } from 'react-router-dom'
 import ReactJson from 'react-json-view'
 import axios from 'axios';
 
-const API_ROOT = 'https://xoy4d878q5.execute-api.us-east-1.amazonaws.com/Prod/bookings';
+const API_ROOT = 'https://edjq2t1u4h.execute-api.us-east-1.amazonaws.com/Prod/bookings';
+// const API_ROOT = 'https://xoy4d878q5.execute-api.us-east-1.amazonaws.com/Prod/bookings';
 // const API_ROOT = 'https://jrm15a6w41.execute-api.us-east-1.amazonaws.com/Prod/bookings';
  
 export const Booking = observer(
