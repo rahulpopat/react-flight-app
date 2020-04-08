@@ -2,10 +2,11 @@ import React from 'react';
 import { observer } from 'mobx-react';
 import "react-datepicker/dist/react-datepicker.css";
 import { Redirect } from 'react-router-dom'
-
 import ReactJson from 'react-json-view'
-
 import axios from 'axios';
+
+const API_ROOT = 'https://xoy4d878q5.execute-api.us-east-1.amazonaws.com/Prod/bookings';
+// const API_ROOT = 'https://jrm15a6w41.execute-api.us-east-1.amazonaws.com/Prod/bookings';
  
 export const Booking = observer(
    class Booking extends React.Component {
@@ -35,7 +36,7 @@ export const Booking = observer(
             console.log(this.state.flightNumber)
 
             // axios GET call to get all bookings
-            axios.get('https://jrm15a6w41.execute-api.us-east-1.amazonaws.com/Prod/bookings')
+            axios.get(API_ROOT)
                 .then((response) => {
                     console.log(response.data);
                     console.log(response.data.bookings);
@@ -75,7 +76,8 @@ export const Booking = observer(
             }
             console.log('request ' + JSON.stringify(request))
 
-            axios.post(`https://jrm15a6w41.execute-api.us-east-1.amazonaws.com/Prod/bookings`, request )
+            // axios POST call to get all bookings
+            axios.post(API_ROOT, request )
             .then(response => {
                 console.log('response ' + response);
                 console.log('response data ' + response.data);
