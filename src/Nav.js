@@ -8,7 +8,7 @@ export default class Nav extends React.Component {
     return (
       <div {...css(styles.container)}>
         {/* <a class="navbar-brand" href="#"><img src={logo} alt="logo image" /></a> */}
-          <img src={logo} alt="logo image" height="50" width="70"/>
+          <img src={logo} alt="logo" height="50" width="70"/>
           <h1 {...css(styles.heading)}>Octank Travels</h1>
           {/* <h1 {...css(styles.heading)}>&nbsp;&nbsp;Octank Travels</h1> */}
           {/* <Link to='/' {...css(styles.link)}></Link> */}

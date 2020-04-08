@@ -8,6 +8,9 @@ import axios from 'axios';
 const API_ROOT = 'https://edjq2t1u4h.execute-api.us-east-1.amazonaws.com/Prod/bookings';
 // const API_ROOT = 'https://xoy4d878q5.execute-api.us-east-1.amazonaws.com/Prod/bookings';
 // const API_ROOT = 'https://jrm15a6w41.execute-api.us-east-1.amazonaws.com/Prod/bookings';
+
+// const { customer, paymentToken } = this.state;
+// const isEnabled =  customer.length > 0 &&  paymentToken.length >0;
  
 export const Booking = observer(
    class Booking extends React.Component {
@@ -22,9 +25,10 @@ export const Booking = observer(
                isError: false,
                redirect: false,
                allBookings: [],
-               bookingsCreated: ''
+               bookingsCreated: '',
+               isEnabled: false
            };
-       }
+        }
 
         componentDidMount () {
             // console.log(this.state.flightNumber)
@@ -67,6 +71,19 @@ export const Booking = observer(
         bookFlight = (event) => {
             console.log(this.state)
             event.preventDefault();
+
+            let validInput = this.state.customer.length > 0 &&  this.state.paymentToken.length >0;
+
+            if(!validInput) {
+                console.log('ERRRRORORO '+ validInput)
+                this.setState({
+                    isError: true
+                })
+            } else {
+                this.setState({
+                    isError: false
+                })
+            }
 
             const request = {
                 bookingOutboundFlightId: this.state.flightNumber,
@@ -144,6 +161,12 @@ export const Booking = observer(
             <button className="uk-button uk-button-default uk-button-large submit-button" onClick={this.bookFlight}>Book Now</button>
 
             {this.renderRedirect()}
+
+            {this.state.isError && <div className="inputCard">
+                <div className="uk-card uk-card-default uk-card-body error" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+                    <p>Invalid input</p>
+                </div>
+            </div>}
 
             {this.state.isSuccess && 
             <div className="inputCard">

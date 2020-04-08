@@ -25,7 +25,8 @@ class App extends Component {
               <Route path="/search" component={FlightSearch} />
               <Route path="/booking/:flightNumber" component={Booking} />
               <Route path="/flightFilter" component={FlightFilter} />
-              <Route path="*" component={NotFoundPage} />
+              <Route component={NotFoundPage} />
+              {/* <Route path="*" component={NotFoundPage} /> */}
             </Switch>
           </div>
         </Router>
