@@ -60,8 +60,7 @@ class FilterFlights extends React.Component {
             fromAirport: '',
             toAirport: 'SEA',
             result: '',
-            isError: false,
-            filteredList: []
+            isError: false
         };
     }
 
@@ -93,7 +92,7 @@ class FilterFlights extends React.Component {
   render() {
     console.log('props ' + this.props)
     const { loading } = this.props.data
-    const { items } = this.props.data.listFlights
+    const { items } = this.props.data.listFlights || []
 
     return (
       

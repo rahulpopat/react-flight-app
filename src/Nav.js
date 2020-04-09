@@ -31,6 +31,7 @@ const styles = {
   },
   container: {
     display: 'flex',
+    flexdirection: 'column',
     // backgroundColor: '#ff6000',
     backgroundColor: '#0068c3',
     padding: '0px 30px',
